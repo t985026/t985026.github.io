@@ -39,6 +39,22 @@ skip_render:
   - '*/*.json'
   - '**/*.json'
 
+sitemap:
+    path: sitemap.xml
+
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: false
+  content_limit: 10
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
 
 # Writing
 new_post_name: :year-:month-:day-:title.md # File name of new posts
@@ -50,7 +66,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -169,32 +185,36 @@ symbols_count_time:
   suffix: "mins."
 
 
-# # https://github.com/next-theme/hexo-optimize
-# filter_optimize:
-#   enable: true
-#   # remove the surrounding comments in each of the bundled files
-#   remove_comments: false
-#   css:
-#     # minify all css files
-#     minify: true
-#     # bundle loaded css files into one
-#     bundle: true
-#     # use a script block to load css elements dynamically
-#     delivery: true
-#     # make specific css content inline into the html page
-#     #   - only support the full path
-#     #   - default is ['css/main.css']
-#     inlines:
-#     excludes:
-#   js:
-#     # minify all js files
-#     minify: true
-#     # bundle loaded js files into one
-#     bundle: true
-#     excludes:
-#   # set the priority of this plugin,
-#   # lower means it will be executed first, default of Hexo is 10
-#   priority: 12
+# https://github.com/next-theme/hexo-optimize
+filter_optimize:
+  enable: true
+  # static resource versioning
+  versioning: false
+  css:
+    # minify all css files
+    minify: true
+    excludes:
+    # use preload to load css elements dynamically
+    delivery:
+      - '@fortawesome/fontawesome-free'
+      - 'fonts.googleapis.com'
+    # make specific css content inline into the html page
+    inlines:
+      # support full path only
+      - css/main.css
+  js:
+    # minify all js files
+    minify: true
+    excludes:
+    # remove the comments in each of the js files
+    remove_comments: false
+  html:
+    # minify all html files
+    minify: true
+    excludes:
+  # set the priority of this plugin,
+  # lower means it will be executed first, default of Hexo is 10
+  priority: 12
 
 # JavaScript library for reading EXIF image metadata.
 # For more information: https://github.com/exif-js/exif-js
@@ -259,3 +279,42 @@ markdown:
     permalink: true
     permalinkClass: header-anchor
     permalinkSymbol: ''
+
+# top button https://github.com/jiangtj-lab/hexo-cake-moon-menu
+moon_menu:
+  back2top:
+    enable: true
+    icon: fas fa-chevron-up
+    order: -1
+  back2bottom:
+    enable: true
+    icon: fas fa-chevron-down
+    order: -2
+
+# Likely Share https://github.com/theme-next/hexo-next-share
+# See: https://ilyabirman.net/projects/likely/, https://github.com/ilyabirman/Likely
+# Likely supports four looks, nine social networks, any button text.
+# You are free to modify the text value and order of any network.
+likely:
+  enable: true
+  cdn:
+    js: //cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js
+    css: //cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css
+  look: normal # available values: normal, light, small, big
+  networks:
+    twitter: Tweet
+    facebook: Share
+    linkedin: Link
+    gplus: Plus
+    vkontakte: Share
+    odnoklassniki: Class
+    telegram: Send
+    whatsapp: Send
+    pinterest: Pin
+
+# Generate categories from directory-tree
+# Dependencies: https://github.com/xu-song/hexo-auto-category
+# depth: the depth of directory-tree you want to generate, should > 0
+auto_category:
+ enable: true
+ depth:
