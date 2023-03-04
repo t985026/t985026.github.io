@@ -15,6 +15,7 @@
     "@next-theme/plugins": "^8.14.1",
     "cdnjs": "^0.3.2",
     "eslint": "^8.31.0",
+    "exif-js": "^2.3.0",
     "firebase": "^9.15.0",
     "hexo": "^6.3.0",
     "hexo-admin": "^2.3.0",
@@ -37,11 +38,12 @@
     "hexo-pangu": "^0.2.2",
     "hexo-related-popular-posts": "^5.0.1",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-markdown-it": "git+https://github.com/hexojs/hexo-renderer-markdown-it.git",
+    "hexo-renderer-markdown-it": "github:hexojs/hexo-renderer-markdown-it",
     "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^3.0.0",
     "hexo-symbols-count-time": "^0.7.1",
-    "hexo-word-counter": "0.1.0",
+    "hexo-theme-next": "^8.15.0",
+    "hexo-word-counter": "^0.1.0",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-container": "^3.0.0",
     "markdown-it-deflist": "^2.1.0",
@@ -53,6 +55,7 @@
     "markdown-it-regexp": "^0.4.0",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "markdown-it-task-checkbox": "^1.0.6"
+    "markdown-it-task-checkbox": "^1.0.6",
+    "pjax": "^0.2.8"
   }
 }
