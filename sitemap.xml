@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://t985026.github.io/2023/03/04/hello-world/</loc>
+    <loc>https://t985026.github.io/2023/03/05/hello-world/</loc>
     
-    <lastmod>2023-03-04</lastmod>
+    <lastmod>2023-03-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,7 @@
   <url>
     <loc>https://t985026.github.io/2023/03/04/%E6%B8%AC%E8%A9%A6%E6%96%87%E7%AB%A0/</loc>
     
-    <lastmod>2023-03-04</lastmod>
+    <lastmod>2023-03-05</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,7 @@
 
   <url>
     <loc>https://t985026.github.io/</loc>
-    <lastmod>2023-03-04</lastmod>
+    <lastmod>2023-03-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
