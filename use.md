@@ -4,7 +4,6 @@ npm init 產生package.json
 
 ```
 
-
 # hexo 常用
 '''js
 hexo init [folder] 建立資料夾
