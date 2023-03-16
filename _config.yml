@@ -39,9 +39,25 @@ skip_render:
   - '*/*.json'
   - '**/*.json'
 
+sitemap:
+    path: sitemap.xml
+
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content: false
+  content_limit: 10
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -50,7 +66,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -66,6 +82,28 @@ prismjs:
   line_number: true
   tab_replace: ''
 
+# 資產資料夾
+marked:
+  gfm: true
+  pedantic: false
+  breaks: true
+  smartLists: true
+  smartypants: true
+  quotes: '“”‘’'
+  modifyAnchors: 0
+  autolink: true
+  mangle: true
+  sanitizeUrl: false
+  headerIds: true
+  lazyload: true
+  prependRoot: true
+  postAsset: true
+  external_link:
+    enable: false
+    exclude: []
+    nofollow: false
+  disableNunjucks: false
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -78,7 +116,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-tag_map:
+  Invest: 投資
+tag_map: 
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -95,7 +134,7 @@ updated_option: 'mtime'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 5
 pagination_dir: page
 
 # Include / Exclude file(s)
@@ -107,7 +146,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -117,4 +156,166 @@ deploy:
   # example, https://github.com/hexojs/hexojs.github.io
   branch: gh-pages
 
+archive_generator:
+  per_page: 12
+  yearly: true
+  monthly: true
+  daily: false
+
+server:
+  port: 5000
+
+# https://github.com/next-theme/hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
+# https://github.com/next-theme/hexo-word-counter
+symbols_count_time:
+  symbols: true
+  time: true
+  # footer 顯示
+  total_symbols: false
+  total_time: false
+  exclude_codeblock: false
+  awl: 4
+  wpm: 275
+  suffix: "mins."
+
+
+# https://github.com/next-theme/hexo-optimize
+filter_optimize:
+  enable: true
+  # static resource versioning
+  versioning: false
+  css:
+    # minify all css files
+    minify: true
+    excludes:
+    # use preload to load css elements dynamically
+    delivery:
+      - '@fortawesome/fontawesome-free'
+      - 'fonts.googleapis.com'
+    # make specific css content inline into the html page
+    inlines:
+      # support full path only
+      - css/main.css
+  js:
+    # minify all js files
+    minify: true
+    excludes:
+    # remove the comments in each of the js files
+    remove_comments: false
+  html:
+    # minify all html files
+    minify: true
+    excludes:
+  # set the priority of this plugin,
+  # lower means it will be executed first, default of Hexo is 10
+  priority: 12
+
+# JavaScript library for reading EXIF image metadata.
+# For more information: https://github.com/exif-js/exif-js
+exif:
+  enable: false
+  tags:
+    FocalLength: "{value}mm"
+    FNumber: "f/{value}"
+    ExposureTime: "{value}s"
+
+# hexo-hide-posts https://github.com/prinsss/hexo-hide-posts
+hide_posts:
+  # 可以改成其他你喜欢的名字
+  filter: hidden
+  # 指定你想要传递隐藏文章的 generator，比如让所有隐藏文章在存档页面可见
+  # 常见的 generators 有：index, tag, category, archive, sitemap, feed, etc.
+  public_generators: []
+  # 为隐藏的文章添加 noindex meta 标签，阻止搜索引擎收录
+  noindex: true
+
+lazyload:
+  enable: false
+  onlypost: false
+  loadingImg: /images/loading.gif
+
+# Markdown-it config
+# Docs: https://github.com/hexojs/hexo-renderer-markdown-it/wiki
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-deflist
+    - markdown-it-imsize
+    - markdown-it-mark
+    - markdown-it-regexp
+    - markdown-it-task-checkbox
+    - name: markdown-it-container
+      options: success
+    - name: markdown-it-container
+      options: info
+    - name: markdown-it-container
+      options: warning
+    - name: markdown-it-container
+      options: danger
+    - markdown-it-deflist
+    - name: markdown-it-emoji
+      options:
+        shortcuts: {}
+  anchors:
+    level: 1
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ''
+
+# top button https://github.com/jiangtj-lab/hexo-cake-moon-menu
+moon_menu:
+  back2top:
+    enable: true
+    icon: fas fa-chevron-up
+    order: -1
+  back2bottom:
+    enable: true
+    icon: fas fa-chevron-down
+    order: -2
+
+# Likely Share https://github.com/theme-next/hexo-next-share
+# See: https://ilyabirman.net/projects/likely/, https://github.com/ilyabirman/Likely
+# Likely supports four looks, nine social networks, any button text.
+# You are free to modify the text value and order of any network.
+likely:
+  enable: true
+  cdn:
+    js: //cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.js
+    css: //cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.min.css
+  look: normal # available values: normal, light, small, big
+  networks:
+    twitter: Tweet
+    facebook: Share
+    linkedin: Link
+    gplus: Plus
+    vkontakte: Share
+    odnoklassniki: Class
+    telegram: Send
+    whatsapp: Send
+    pinterest: Pin
+
+# Generate categories from directory-tree
+# Dependencies: https://github.com/xu-song/hexo-auto-category
+# depth: the depth of directory-tree you want to generate, should > 0
+auto_category:
+ enable: true
+ depth:
 
